@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { trips, type Trip } from "@/data/trips";
 import { Search } from "lucide-react";
@@ -101,7 +101,12 @@ function ExplorarPage() {
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((t) => (
-              <article key={t.id} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card hover-lift">
+              <Link
+                key={t.id}
+                to="/explorar/$tripId"
+                params={{ tripId: t.id }}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card hover-lift"
+              >
                 <div className="image-zoom aspect-[4/3]">
                   <img src={t.image} alt={t.name} loading="lazy" className="h-full w-full object-cover" />
                 </div>
@@ -121,12 +126,12 @@ function ExplorarPage() {
                       <p className="text-[11px] uppercase tracking-widest text-muted-foreground">Desde</p>
                       <p className="font-display text-2xl">${t.priceFrom.toLocaleString()}</p>
                     </div>
-                    <button className="rounded-full border border-foreground px-4 py-2 text-xs transition-colors hover:bg-foreground hover:text-background">
+                    <span className="rounded-full border border-foreground px-4 py-2 text-xs transition-colors group-hover:bg-foreground group-hover:text-background">
                       Cotizar
-                    </button>
+                    </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 

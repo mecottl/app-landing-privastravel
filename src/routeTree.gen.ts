@@ -14,6 +14,7 @@ import { Route as ExplorarRouteImport } from './routes/explorar'
 import { Route as ExperienciasRouteImport } from './routes/experiencias'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExplorarTripIdRouteImport } from './routes/explorar.$tripId'
 
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
@@ -40,34 +41,54 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExplorarTripIdRoute = ExplorarTripIdRouteImport.update({
+  id: '/$tripId',
+  path: '/$tripId',
+  getParentRoute: () => ExplorarRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/experiencias': typeof ExperienciasRoute
-  '/explorar': typeof ExplorarRoute
+  '/explorar': typeof ExplorarRouteWithChildren
   '/nosotros': typeof NosotrosRoute
+  '/explorar/$tripId': typeof ExplorarTripIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/experiencias': typeof ExperienciasRoute
-  '/explorar': typeof ExplorarRoute
+  '/explorar': typeof ExplorarRouteWithChildren
   '/nosotros': typeof NosotrosRoute
+  '/explorar/$tripId': typeof ExplorarTripIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/experiencias': typeof ExperienciasRoute
-  '/explorar': typeof ExplorarRoute
+  '/explorar': typeof ExplorarRouteWithChildren
   '/nosotros': typeof NosotrosRoute
+  '/explorar/$tripId': typeof ExplorarTripIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contacto' | '/experiencias' | '/explorar' | '/nosotros'
+  fullPaths:
+    | '/'
+    | '/contacto'
+    | '/experiencias'
+    | '/explorar'
+    | '/nosotros'
+    | '/explorar/$tripId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contacto' | '/experiencias' | '/explorar' | '/nosotros'
+  to:
+    | '/'
+    | '/contacto'
+    | '/experiencias'
+    | '/explorar'
+    | '/nosotros'
+    | '/explorar/$tripId'
   id:
     | '__root__'
     | '/'
@@ -75,13 +96,14 @@ export interface FileRouteTypes {
     | '/experiencias'
     | '/explorar'
     | '/nosotros'
+    | '/explorar/$tripId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
   ExperienciasRoute: typeof ExperienciasRoute
-  ExplorarRoute: typeof ExplorarRoute
+  ExplorarRoute: typeof ExplorarRouteWithChildren
   NosotrosRoute: typeof NosotrosRoute
 }
 
@@ -122,14 +144,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/explorar/$tripId': {
+      id: '/explorar/$tripId'
+      path: '/$tripId'
+      fullPath: '/explorar/$tripId'
+      preLoaderRoute: typeof ExplorarTripIdRouteImport
+      parentRoute: typeof ExplorarRoute
+    }
   }
 }
+
+interface ExplorarRouteChildren {
+  ExplorarTripIdRoute: typeof ExplorarTripIdRoute
+}
+
+const ExplorarRouteChildren: ExplorarRouteChildren = {
+  ExplorarTripIdRoute: ExplorarTripIdRoute,
+}
+
+const ExplorarRouteWithChildren = ExplorarRoute._addFileChildren(
+  ExplorarRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
   ExperienciasRoute: ExperienciasRoute,
-  ExplorarRoute: ExplorarRoute,
+  ExplorarRoute: ExplorarRouteWithChildren,
   NosotrosRoute: NosotrosRoute,
 }
 export const routeTree = rootRouteImport
