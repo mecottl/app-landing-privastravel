@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { trips, type Trip } from "@/data/trips";
 import { Search } from "lucide-react";
@@ -7,9 +7,9 @@ import { Search } from "lucide-react";
 export const Route = createFileRoute("/explorar")({
   head: () => ({
     meta: [
-      { title: "Explorar viajes · Marenostro" },
+      { title: "Explorar viajes · PrivasTravel" },
       { name: "description", content: "Catálogo de viajes curados. Filtra por destino y rango de precio para encontrar tu próxima escapada." },
-      { property: "og:title", content: "Explorar viajes · Marenostro" },
+      { property: "og:title", content: "Explorar viajes · PrivasTravel" },
       { property: "og:description", content: "Filtra y descubre destinos seleccionados." },
     ],
   }),
@@ -103,11 +103,11 @@ function ExplorarPage() {
             {filtered.map((t) => (
               <Link
                 key={t.id}
-                to="/explorar/$tripId"
+                to="/viaje/$tripId"
                 params={{ tripId: t.id }}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card hover-lift"
               >
-                <div className="image-zoom aspect-[4/3]">
+                <div className="image-zoom aspect-4/3">
                   <img src={t.image} alt={t.name} loading="lazy" className="h-full w-full object-cover" />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
@@ -142,6 +142,7 @@ function ExplorarPage() {
           )}
         </div>
       </section>
+      <Outlet/>
     </Layout>
   );
 }

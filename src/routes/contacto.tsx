@@ -6,9 +6,9 @@ import { Mail, Phone, MapPin } from "lucide-react";
 export const Route = createFileRoute("/contacto")({
   head: () => ({
     meta: [
-      { title: "Contacto · Marenostro" },
+      { title: "Contacto · PrivasTravel" },
       { name: "description", content: "Cuéntanos a dónde sueñas ir. Cotización personalizada en menos de 24 horas, sin compromiso." },
-      { property: "og:title", content: "Contacto · Marenostro" },
+      { property: "og:title", content: "Contacto · PrivasTravel" },
       { property: "og:description", content: "Cotiza tu próximo viaje con nosotros." },
     ],
   }),
@@ -42,7 +42,7 @@ function ContactoPage() {
               </li>
               <li className="flex items-start gap-4">
                 <Mail size={18} className="mt-0.5 text-accent" />
-                <span>hola@marenostro.travel</span>
+                <span>hola@PrivasTravel.travel</span>
               </li>
             </ul>
           </div>

@@ -8,9 +8,9 @@ import tours from "@/assets/exp-tours.jpg";
 export const Route = createFileRoute("/experiencias")({
   head: () => ({
     meta: [
-      { title: "Experiencias · Marenostro" },
+      { title: "Experiencias · PrivasTravel" },
       { name: "description", content: "Tours culturales, viajes de lujo y salidas grupales. Tres formas de descubrir el mundo con la misma curaduría." },
-      { property: "og:title", content: "Experiencias · Marenostro" },
+      { property: "og:title", content: "Experiencias · PrivasTravel" },
       { property: "og:description", content: "Tours, lujo y grupos. Una sola filosofía." },
     ],
   }),

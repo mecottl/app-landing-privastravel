@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation} from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import logo  from "../../assets/logo.png";
 
 const links = [
   { to: "/", label: "Inicio" },
@@ -21,6 +22,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+    const location = useLocation();
+    const isHome = location.pathname === "/";
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -31,8 +35,8 @@ export function Navbar() {
     >
       <div className="container-x flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 font-display text-xl tracking-tight">
-          <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-          Marenostro
+        
+          <img src={logo} alt="Logo Privas Travel"  className={`w-32 transition-all duration-500 ${isHome && !scrolled ? "brightness-0 invert" : ""}`} />
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">

@@ -31,12 +31,12 @@ export function Experiences() {
             <Link
               key={it.title}
               to="/experiencias"
-              className="group relative isolate block aspect-[4/5] overflow-hidden rounded-2xl bg-charcoal"
+              className="group relative isolate block aspect-4/5 overflow-hidden rounded-2xl bg-charcoal"
             >
               <div className="image-zoom h-full w-full">
                 <img src={it.image} alt={it.title} loading="lazy" className="h-full w-full object-cover opacity-90" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 text-white">
                 <h3 className="font-display text-3xl">{it.title}</h3>
                 <p className="mt-2 max-w-xs text-sm text-white/80">{it.text}</p>

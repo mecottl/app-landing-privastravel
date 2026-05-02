@@ -9,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 font-display text-2xl">
               <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-              Marenostro
+              PrivasTravel
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Diseñamos viajes con sentido. Itinerarios curados, atención personal y la confianza
@@ -32,7 +32,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>Av. Reforma 142, CDMX</li>
               <li>+52 55 1234 5678</li>
-              <li>hola@marenostro.travel</li>
+              <li>hola@PrivasTravel.travel</li>
             </ul>
             <div className="mt-5 flex gap-3">
               <a href="#" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border hover:border-accent hover:text-accent transition-colors"><Instagram size={16} /></a>
@@ -43,7 +43,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Marenostro Viajes. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} PrivasTravel Viajes. Todos los derechos reservados.</p>
           <div className="flex gap-5">
             <a href="#" className="hover:text-foreground">Aviso de privacidad</a>
             <a href="#" className="hover:text-foreground">Términos</a>

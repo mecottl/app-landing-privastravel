@@ -5,9 +5,9 @@ import kyoto from "@/assets/hero-kyoto.jpg";
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
     meta: [
-      { title: "Nosotros · Marenostro" },
+      { title: "Nosotros · PrivasTravel" },
       { name: "description", content: "Una agencia local con la mirada puesta en el mundo. Itinerarios curados a mano, atención personal y la confianza de 18 años de experiencia." },
-      { property: "og:title", content: "Nosotros · Marenostro" },
+      { property: "og:title", content: "Nosotros · PrivasTravel" },
       { property: "og:description", content: "Agencia local, mirada internacional." },
     ],
   }),
@@ -25,7 +25,7 @@ function NosotrosPage() {
               Diseñamos viajes con sentido, no productos en serie.
             </h1>
             <p className="mt-8 text-lg text-muted-foreground">
-              Marenostro nació en 2007 como una agencia local con una idea simple: tratar cada viaje
+              PrivasTravel nació en 2007 como una agencia local con una idea simple: tratar cada viaje
               como un proyecto personal. Hoy seguimos siendo un equipo pequeño y especializado, con
               presencia en más de 60 destinos y un cuidado obsesivo por los detalles.
             </p>
@@ -36,7 +36,7 @@ function NosotrosPage() {
           </div>
           <div className="md:col-span-5">
             <div className="image-zoom aspect-[4/5] overflow-hidden rounded-2xl">
-              <img src={kyoto} alt="Equipo Marenostro" loading="lazy" className="h-full w-full object-cover" />
+              <img src={kyoto} alt="Equipo PrivasTravel" loading="lazy" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

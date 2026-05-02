@@ -23,7 +23,7 @@ export function Promotions() {
               key={p.id}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card hover-lift"
             >
-              <div className="image-zoom aspect-[4/3] overflow-hidden">
+              <div className="image-zoom aspect-4/3 overflow-hidden">
                 <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <div className="flex flex-1 flex-col p-6">

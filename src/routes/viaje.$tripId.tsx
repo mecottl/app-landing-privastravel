@@ -3,7 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { trips } from "@/data/trips";
 import { ArrowLeft, Check, X, Plane, CalendarDays, Hotel as HotelIcon, MapPin, FileCheck2, AlertTriangle, Compass } from "lucide-react";
 
-export const Route = createFileRoute("/explorar/$tripId")({
+export const Route = createFileRoute("/viaje/$tripId")({
   loader: ({ params }) => {
     const trip = trips.find((t) => t.id === params.tripId);
     if (!trip) throw notFound();
@@ -12,14 +12,14 @@ export const Route = createFileRoute("/explorar/$tripId")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `Cotización: ${loaderData.trip.name} · Marenostro` },
+          { title: `Cotización: ${loaderData.trip.name} · PrivasTravel` },
           { name: "description", content: loaderData.trip.summary },
-          { property: "og:title", content: `${loaderData.trip.name} · Marenostro` },
+          { property: "og:title", content: `${loaderData.trip.name} · PrivasTravel` },
           { property: "og:description", content: loaderData.trip.summary },
           { property: "og:image", content: loaderData.trip.image },
           { name: "twitter:image", content: loaderData.trip.image },
         ]
-      : [{ title: "Cotización · Marenostro" }],
+      : [{ title: "Cotización · PrivasTravel" }],
   }),
   notFoundComponent: () => (
     <Layout>
@@ -60,9 +60,9 @@ function TripDetailPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden">
+      <section className="relative h-[70vh] min-h-480px w-full overflow-hidden">
         <img src={trip.image} alt={trip.name} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/20 to-black/70" />
         <div className="container-x relative flex h-full flex-col justify-end pb-16 text-white">
           <Link to="/explorar" className="mb-6 inline-flex w-fit items-center gap-2 text-xs uppercase tracking-[0.22em] opacity-80 hover:opacity-100">
             <ArrowLeft size={14} /> Volver al catálogo
@@ -134,7 +134,7 @@ function TripDetailPage() {
               <ul className="mt-6 space-y-3">
                 {trip.includes.map((i) => (
                   <li key={i} className="flex gap-3 text-sm">
-                    <Check size={18} className="mt-0.5 shrink-0 text-[var(--ocean)]" />
+                    <Check size={18} className="mt-0.5 shrink-0 text-ocean" />
                     <span>{i}</span>
                   </li>
                 ))}
@@ -259,7 +259,7 @@ function TripDetailPage() {
           <ul className="space-y-3 rounded-2xl border border-border bg-card p-8">
             {trip.notes.map((n) => (
               <li key={n} className="flex gap-3 text-sm">
-                <AlertTriangle size={16} className="mt-0.5 shrink-0 text-[var(--ocean)]" />
+                <AlertTriangle size={16} className="mt-0.5 shrink-0 text-ocean" />
                 <span className="text-muted-foreground">{n}</span>
               </li>
             ))}
