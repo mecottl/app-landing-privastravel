@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation} from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logo  from "../../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 const links = [
   { to: "/", label: "Inicio" },
@@ -22,8 +22,8 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-    const location = useLocation();
-    const isHome = location.pathname === "/";
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   return (
     <header
@@ -35,8 +35,7 @@ export function Navbar() {
     >
       <div className="container-x flex h-16 items-center justify-between md:h-20">
         <Link to="/" className="flex items-center gap-2 font-display text-xl tracking-tight">
-        
-          <img src={logo} alt="Logo Privas Travel"  className={`w-32 transition-all duration-500 ${isHome && !scrolled ? "brightness-0 invert" : ""}`} />
+          <img src={logo} alt="Logo Privas Travel" className={`w-32 transition-all duration-500 ${isHome && !scrolled ? "brightness-0 invert" : ""}`} />
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">

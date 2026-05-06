@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { trips } from "@/data/trips";
+import { useQuery } from "@tanstack/react-query";
+import { getTrips } from "@/lib/supabase";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function Promotions() {
   const ref = useReveal<HTMLDivElement>();
-  const promos = trips.slice(0, 3);
+  const { data: allTrips = [] } = useQuery({ queryKey: ["trips"], queryFn: getTrips });
+  const promos = allTrips.slice(0, 3);
 
   return (
     <section className="border-y border-border bg-secondary/40 py-24 md:py-32">

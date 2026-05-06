@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Mail } from "lucide-react";
+import logo from "../../assets/logo.png";
+
 
 export function Footer() {
   return (
@@ -8,8 +10,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 font-display text-2xl">
-              <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-              PrivasTravel
+          <img src={logo} alt="Logo Privas Travel" className={`w-32 brightness-0`} />
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Diseñamos viajes con sentido. Itinerarios curados, atención personal y la confianza
@@ -20,7 +21,7 @@ export function Footer() {
           <div>
             <p className="eyebrow mb-4">Explorar</p>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/explorar" className="hover:text-accent">Viajes</Link></li>
+              <li><Link to="/explorar" className="hover:text-accent" >Viajes</Link></li>
               <li><Link to="/experiencias" className="hover:text-accent">Experiencias</Link></li>
               <li><Link to="/nosotros" className="hover:text-accent">Nosotros</Link></li>
               <li><Link to="/contacto" className="hover:text-accent">Contacto</Link></li>

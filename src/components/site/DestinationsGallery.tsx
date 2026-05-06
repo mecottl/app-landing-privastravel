@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { trips } from "@/data/trips";
+import { useQuery } from "@tanstack/react-query";
+import { getTrips } from "@/lib/supabase";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function DestinationsGallery() {
   const ref = useReveal<HTMLDivElement>();
   const [active, setActive] = useState<string | null>(null);
-  const items = trips.slice(0, 6);
+  const { data: allTrips = [] } = useQuery({ queryKey: ["trips"], queryFn: getTrips });
+  const items = allTrips.slice(0, 6);
 
   return (
     <section className="py-24 md:py-32">
@@ -29,19 +31,18 @@ export function DestinationsGallery() {
 
         <div className="mt-14 grid gap-5 md:grid-cols-3 md:grid-rows-2 md:gap-6">
           {items.map((t, idx) => {
-            const span =
-              idx === 0
-                ? "md:col-span-2 md:row-span-2"
-                : "";
+            const span = idx === 0 ? "md:col-span-2 md:row-span-2" : "";
+            const sharedClass = `group relative isolate overflow-hidden rounded-2xl bg-charcoal hover-lift ${span} ${
+              active && active !== t.id ? "opacity-70" : ""
+            } transition-opacity`;
+
             return (
               <Link
                 key={t.id}
                 to="/explorar"
                 onMouseEnter={() => setActive(t.id)}
                 onMouseLeave={() => setActive(null)}
-                className={`group relative isolate overflow-hidden rounded-2xl bg-charcoal hover-lift ${span} ${
-                  active && active !== t.id ? "opacity-70" : ""
-                } transition-opacity`}
+                className={sharedClass}
               >
                 <div className="image-zoom h-full w-full">
                   <img
