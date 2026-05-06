@@ -9,68 +9,68 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NosotrosRouteImport } from './routes/nosotros'
-import { Route as ExplorarRouteImport } from './routes/explorar'
-import { Route as ExperienciasRouteImport } from './routes/experiencias'
-import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ViajeTripIdRouteImport } from './routes/viaje.$tripId'
+import { Route as DisabledNosotrosRouteImport } from './routes/_disabled/nosotros'
+import { Route as DisabledExplorarRouteImport } from './routes/_disabled/explorar'
+import { Route as DisabledExperienciasRouteImport } from './routes/_disabled/experiencias'
+import { Route as DisabledContactoRouteImport } from './routes/_disabled/contacto'
+import { Route as DisabledViajeTripIdRouteImport } from './routes/_disabled/viaje.$tripId'
 
-const NosotrosRoute = NosotrosRouteImport.update({
-  id: '/nosotros',
-  path: '/nosotros',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExplorarRoute = ExplorarRouteImport.update({
-  id: '/explorar',
-  path: '/explorar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExperienciasRoute = ExperienciasRouteImport.update({
-  id: '/experiencias',
-  path: '/experiencias',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactoRoute = ContactoRouteImport.update({
-  id: '/contacto',
-  path: '/contacto',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ViajeTripIdRoute = ViajeTripIdRouteImport.update({
-  id: '/viaje/$tripId',
+const DisabledNosotrosRoute = DisabledNosotrosRouteImport.update({
+  id: '/_disabled/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisabledExplorarRoute = DisabledExplorarRouteImport.update({
+  id: '/_disabled/explorar',
+  path: '/explorar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisabledExperienciasRoute = DisabledExperienciasRouteImport.update({
+  id: '/_disabled/experiencias',
+  path: '/experiencias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisabledContactoRoute = DisabledContactoRouteImport.update({
+  id: '/_disabled/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisabledViajeTripIdRoute = DisabledViajeTripIdRouteImport.update({
+  id: '/_disabled/viaje/$tripId',
   path: '/viaje/$tripId',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contacto': typeof ContactoRoute
-  '/experiencias': typeof ExperienciasRoute
-  '/explorar': typeof ExplorarRoute
-  '/nosotros': typeof NosotrosRoute
-  '/viaje/$tripId': typeof ViajeTripIdRoute
+  '/contacto': typeof DisabledContactoRoute
+  '/experiencias': typeof DisabledExperienciasRoute
+  '/explorar': typeof DisabledExplorarRoute
+  '/nosotros': typeof DisabledNosotrosRoute
+  '/viaje/$tripId': typeof DisabledViajeTripIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contacto': typeof ContactoRoute
-  '/experiencias': typeof ExperienciasRoute
-  '/explorar': typeof ExplorarRoute
-  '/nosotros': typeof NosotrosRoute
-  '/viaje/$tripId': typeof ViajeTripIdRoute
+  '/contacto': typeof DisabledContactoRoute
+  '/experiencias': typeof DisabledExperienciasRoute
+  '/explorar': typeof DisabledExplorarRoute
+  '/nosotros': typeof DisabledNosotrosRoute
+  '/viaje/$tripId': typeof DisabledViajeTripIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/contacto': typeof ContactoRoute
-  '/experiencias': typeof ExperienciasRoute
-  '/explorar': typeof ExplorarRoute
-  '/nosotros': typeof NosotrosRoute
-  '/viaje/$tripId': typeof ViajeTripIdRoute
+  '/_disabled/contacto': typeof DisabledContactoRoute
+  '/_disabled/experiencias': typeof DisabledExperienciasRoute
+  '/_disabled/explorar': typeof DisabledExplorarRoute
+  '/_disabled/nosotros': typeof DisabledNosotrosRoute
+  '/_disabled/viaje/$tripId': typeof DisabledViajeTripIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -92,52 +92,24 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/contacto'
-    | '/experiencias'
-    | '/explorar'
-    | '/nosotros'
-    | '/viaje/$tripId'
+    | '/_disabled/contacto'
+    | '/_disabled/experiencias'
+    | '/_disabled/explorar'
+    | '/_disabled/nosotros'
+    | '/_disabled/viaje/$tripId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContactoRoute: typeof ContactoRoute
-  ExperienciasRoute: typeof ExperienciasRoute
-  ExplorarRoute: typeof ExplorarRoute
-  NosotrosRoute: typeof NosotrosRoute
-  ViajeTripIdRoute: typeof ViajeTripIdRoute
+  DisabledContactoRoute: typeof DisabledContactoRoute
+  DisabledExperienciasRoute: typeof DisabledExperienciasRoute
+  DisabledExplorarRoute: typeof DisabledExplorarRoute
+  DisabledNosotrosRoute: typeof DisabledNosotrosRoute
+  DisabledViajeTripIdRoute: typeof DisabledViajeTripIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/nosotros': {
-      id: '/nosotros'
-      path: '/nosotros'
-      fullPath: '/nosotros'
-      preLoaderRoute: typeof NosotrosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/explorar': {
-      id: '/explorar'
-      path: '/explorar'
-      fullPath: '/explorar'
-      preLoaderRoute: typeof ExplorarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/experiencias': {
-      id: '/experiencias'
-      path: '/experiencias'
-      fullPath: '/experiencias'
-      preLoaderRoute: typeof ExperienciasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contacto': {
-      id: '/contacto'
-      path: '/contacto'
-      fullPath: '/contacto'
-      preLoaderRoute: typeof ContactoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -145,11 +117,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/viaje/$tripId': {
-      id: '/viaje/$tripId'
+    '/_disabled/nosotros': {
+      id: '/_disabled/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof DisabledNosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_disabled/explorar': {
+      id: '/_disabled/explorar'
+      path: '/explorar'
+      fullPath: '/explorar'
+      preLoaderRoute: typeof DisabledExplorarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_disabled/experiencias': {
+      id: '/_disabled/experiencias'
+      path: '/experiencias'
+      fullPath: '/experiencias'
+      preLoaderRoute: typeof DisabledExperienciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_disabled/contacto': {
+      id: '/_disabled/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof DisabledContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_disabled/viaje/$tripId': {
+      id: '/_disabled/viaje/$tripId'
       path: '/viaje/$tripId'
       fullPath: '/viaje/$tripId'
-      preLoaderRoute: typeof ViajeTripIdRouteImport
+      preLoaderRoute: typeof DisabledViajeTripIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -157,11 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContactoRoute: ContactoRoute,
-  ExperienciasRoute: ExperienciasRoute,
-  ExplorarRoute: ExplorarRoute,
-  NosotrosRoute: NosotrosRoute,
-  ViajeTripIdRoute: ViajeTripIdRoute,
+  DisabledContactoRoute: DisabledContactoRoute,
+  DisabledExperienciasRoute: DisabledExperienciasRoute,
+  DisabledExplorarRoute: DisabledExplorarRoute,
+  DisabledNosotrosRoute: DisabledNosotrosRoute,
+  DisabledViajeTripIdRoute: DisabledViajeTripIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
