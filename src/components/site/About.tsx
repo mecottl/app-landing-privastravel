@@ -1,9 +1,9 @@
 import { useReveal } from "@/hooks/use-reveal";
 
 const stats = [
-  { k: "18", v: "años de experiencia" },
-  { k: "60+", v: "destinos curados" },
-  { k: "4.9", v: "satisfacción promedio" },
+  { k: "10", v: "años de experiencia" },
+  { k: "60+", v: "destinos" },
+  { k: "100+", v: "clientes satisfechos" },
 ];
 
 export function About() {
@@ -14,12 +14,12 @@ export function About() {
         <div>
           <p className="eyebrow !text-background/60">Nosotros</p>
           <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-            Una agencia local con la mirada puesta en el mundo.
+            Una agencia de viajes local, con presencia internacional. Diseñamos viajes con sentido.
           </h2>
         </div>
         <div className="space-y-6">
           <p className="text-background/80">
-            Somos un equipo pequeño y especializado. Cada itinerario lo escribimos a mano, contigo,
+            Somos un equipo especializado. Cada itinerario lo escribimos a mano, contigo,
             cuidando lo que importa: el ritmo, los detalles y la gente que vas a conocer.
           </p>
           <div className="grid grid-cols-3 gap-6 border-t border-background/15 pt-8">
