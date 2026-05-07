@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(bun add *)"
+      "Bash(bun add *)",
+      "Bash(Find \"c:\\\\.PROYECTOS\\\\Personales\\\\app-landing-privastravel\\\\node_modules\\\\@tanstack\\\\react-start\\\\dist\\\\esm\" -name \"*.js\" -type f)",
+      "Bash(Find \"c:\\\\.PROYECTOS\\\\Personales\\\\app-landing-privastravel\\\\node_modules\\\\@tanstack\\\\start-plugin-core\" -name \"vite.js\" -o -name \"vite.d.ts\")"
     ]
   }
 }

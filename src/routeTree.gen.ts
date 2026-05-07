@@ -10,102 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DisabledNosotrosRouteImport } from './routes/_disabled/nosotros'
-import { Route as DisabledExplorarRouteImport } from './routes/_disabled/explorar'
-import { Route as DisabledExperienciasRouteImport } from './routes/_disabled/experiencias'
-import { Route as DisabledContactoRouteImport } from './routes/_disabled/contacto'
-import { Route as DisabledViajeTripIdRouteImport } from './routes/_disabled/viaje.$tripId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DisabledNosotrosRoute = DisabledNosotrosRouteImport.update({
-  id: '/_disabled/nosotros',
-  path: '/nosotros',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DisabledExplorarRoute = DisabledExplorarRouteImport.update({
-  id: '/_disabled/explorar',
-  path: '/explorar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DisabledExperienciasRoute = DisabledExperienciasRouteImport.update({
-  id: '/_disabled/experiencias',
-  path: '/experiencias',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DisabledContactoRoute = DisabledContactoRouteImport.update({
-  id: '/_disabled/contacto',
-  path: '/contacto',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DisabledViajeTripIdRoute = DisabledViajeTripIdRouteImport.update({
-  id: '/_disabled/viaje/$tripId',
-  path: '/viaje/$tripId',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contacto': typeof DisabledContactoRoute
-  '/experiencias': typeof DisabledExperienciasRoute
-  '/explorar': typeof DisabledExplorarRoute
-  '/nosotros': typeof DisabledNosotrosRoute
-  '/viaje/$tripId': typeof DisabledViajeTripIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contacto': typeof DisabledContactoRoute
-  '/experiencias': typeof DisabledExperienciasRoute
-  '/explorar': typeof DisabledExplorarRoute
-  '/nosotros': typeof DisabledNosotrosRoute
-  '/viaje/$tripId': typeof DisabledViajeTripIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_disabled/contacto': typeof DisabledContactoRoute
-  '/_disabled/experiencias': typeof DisabledExperienciasRoute
-  '/_disabled/explorar': typeof DisabledExplorarRoute
-  '/_disabled/nosotros': typeof DisabledNosotrosRoute
-  '/_disabled/viaje/$tripId': typeof DisabledViajeTripIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/contacto'
-    | '/experiencias'
-    | '/explorar'
-    | '/nosotros'
-    | '/viaje/$tripId'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/contacto'
-    | '/experiencias'
-    | '/explorar'
-    | '/nosotros'
-    | '/viaje/$tripId'
-  id:
-    | '__root__'
-    | '/'
-    | '/_disabled/contacto'
-    | '/_disabled/experiencias'
-    | '/_disabled/explorar'
-    | '/_disabled/nosotros'
-    | '/_disabled/viaje/$tripId'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DisabledContactoRoute: typeof DisabledContactoRoute
-  DisabledExperienciasRoute: typeof DisabledExperienciasRoute
-  DisabledExplorarRoute: typeof DisabledExplorarRoute
-  DisabledNosotrosRoute: typeof DisabledNosotrosRoute
-  DisabledViajeTripIdRoute: typeof DisabledViajeTripIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -117,61 +48,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_disabled/nosotros': {
-      id: '/_disabled/nosotros'
-      path: '/nosotros'
-      fullPath: '/nosotros'
-      preLoaderRoute: typeof DisabledNosotrosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_disabled/explorar': {
-      id: '/_disabled/explorar'
-      path: '/explorar'
-      fullPath: '/explorar'
-      preLoaderRoute: typeof DisabledExplorarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_disabled/experiencias': {
-      id: '/_disabled/experiencias'
-      path: '/experiencias'
-      fullPath: '/experiencias'
-      preLoaderRoute: typeof DisabledExperienciasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_disabled/contacto': {
-      id: '/_disabled/contacto'
-      path: '/contacto'
-      fullPath: '/contacto'
-      preLoaderRoute: typeof DisabledContactoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_disabled/viaje/$tripId': {
-      id: '/_disabled/viaje/$tripId'
-      path: '/viaje/$tripId'
-      fullPath: '/viaje/$tripId'
-      preLoaderRoute: typeof DisabledViajeTripIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DisabledContactoRoute: DisabledContactoRoute,
-  DisabledExperienciasRoute: DisabledExperienciasRoute,
-  DisabledExplorarRoute: DisabledExplorarRoute,
-  DisabledNosotrosRoute: DisabledNosotrosRoute,
-  DisabledViajeTripIdRoute: DisabledViajeTripIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

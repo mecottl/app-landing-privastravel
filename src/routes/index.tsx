@@ -8,14 +8,6 @@ import { About } from "@/components/site/About";
 import { CTASection } from "@/components/site/CTASection";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "PrivasTravel · Viajes diseñados con sentido" },
-      { name: "description", content: "Agencia de viajes local. Destinos curados, experiencias a medida y atención personal para diseñar tu próximo viaje." },
-      { property: "og:title", content: "PrivasTravel · Viajes diseñados con sentido" },
-      { property: "og:description", content: "Destinos curados y experiencias a medida." },
-    ],
-  }),
   component: Index,
 });
 
