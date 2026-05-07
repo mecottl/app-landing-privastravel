@@ -13,8 +13,8 @@ export function Footer() {
           <img src={logo} alt="Logo Privas Travel" className={`w-32 brightness-0`} />
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-              Diseñamos viajes con sentido. Itinerarios curados, atención personal y la confianza
-              de una agencia local con presencia internacional.
+              Atención personal y la confianza de una agencia local con presencia internacional.
+              
             </p>
           </div>
 
@@ -31,9 +31,9 @@ export function Footer() {
           <div>
             <p className="eyebrow mb-4">Contacto</p>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Av. Reforma 142, CDMX</li>
-              <li>+52 55 1234 5678</li>
-              <li>hola@PrivasTravel.travel</li>
+              <li>Mérida, Yucatán, México</li>
+              <li>+52 999 999 9999</li>
+              <li>hola@PrivasTravel.com</li>
             </ul>
             <div className="mt-5 flex gap-3">
               <a href="#" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border hover:border-accent hover:text-accent transition-colors"><Instagram size={16} /></a>
